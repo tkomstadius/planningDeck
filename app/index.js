@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-class App extends Component {
-  render() {
-    return (<h1>Hello world</h1>)
-  }
-}
+import Main from './jsx/Main.jsx';
 
-render(<App />, document.querySelector('#app'));
+render(<Main />, document.querySelector('#app'));
