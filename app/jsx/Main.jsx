@@ -12,20 +12,15 @@ class Main extends Component {
     }
   }
 
-  getDeck() {
-    return ['1', '3', '5', '8', '13', '20', '40', '?'];
-  }
-
   getPickedCard = () => {
-    return this.getDeck()[this.cardIndex];
+    return this.props.deck[this.state.cardIndex];
   }
 
-  cardIsChosen = (args) => {
-    console.log(args);
+  cardIsChosen = (e) => {
     this.setState({
-      cardIsChosen: true
+      cardIsChosen: true,
+      cardIndex: e.target.dataset.card
     });
-    this.cardIndex = args;
   }
 
   cardIsRevealed = () => {
@@ -44,9 +39,9 @@ class Main extends Component {
   render() {
     return (
       <div>
-        
+
         {!this.state.cardIsChosen ?
-        <Deck deck={this.getDeck()} pickCard={this.cardIsChosen} /> :
+        <Deck deck={this.props.deck} chooseCard={this.cardIsChosen} /> :
         !this.state.cardIsRevealed ?
         <Card onClick={this.cardIsRevealed}>Chas</Card> :
         <Card onClick={this.newRound}>{this.getPickedCard()}</Card>}

@@ -7,13 +7,8 @@ class Deck extends Component {
 
   renderDeck() {
     return this.props.deck.map((card, index) => {
-        return <div key={index} data-card={index} onClick={this.callBack}>{card}</div>
+        return <div key={index} data-card={index} onClick={this.props.chooseCard}>{card}</div>
     });
-  }
-
-  callBack = (w) => {
-    console.log(w.target.dataset.card);
-    this.props.pickCard(w.target.dataset.card);
   }
 
   render() {
@@ -21,8 +16,13 @@ class Deck extends Component {
       <div>
         {this.renderDeck()}
       </div>
-    )
+    );
   }
+}
+
+Deck.propTypes = {
+  deck: React.PropTypes.array,
+  chooseCard: React.PropTypes.func
 }
 
 export default Deck;

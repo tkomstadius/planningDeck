@@ -9,7 +9,7 @@ const Card = ({onClick, children}) => {
   );
 
   Card.propTypes = {
-    point: React.PropTypes.string.isRequired
+    onClick: React.PropTypes.func
   }
 }
 
