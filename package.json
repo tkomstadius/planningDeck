@@ -6,8 +6,8 @@
   "scripts": {
     "watch": "webpack -d --watch",
     "build": "webpack",
-    "serve": "serve ./public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "serve ./app",
+    "test": "mocha ./app/test/*.spec.js"
   },
   "author": "Therése Komstadius",
   "devDependencies": {
@@ -16,6 +16,10 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
+    "enzyme": "^2.7.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.2",
     "webpack": "^2.2.1"
   },
   "dependencies": {

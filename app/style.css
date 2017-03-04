@@ -52,7 +52,7 @@ header img {
 }
 
 .deckCard:hover {
-  transition: ease 0.5s;
+  transition: ease 0.3s;
   transform: scale(1.1);
 }
 
@@ -81,12 +81,8 @@ header img {
 }
 
 @media (min-width: 400px) {
-  header img {
-    height: 60px;
-    width: auto;
-  }
   .card {
-    height: 670px;
+    height: 690px;
     max-width: 650px;
   }
 }
@@ -97,8 +93,8 @@ header img {
     max-width: 170px;
   }
   .card {
-    height: 850px;
-    max-width: 650px;
+    height: 800px;
+    max-width: 550px;
   }
 }
 
