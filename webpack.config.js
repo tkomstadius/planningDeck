@@ -6,13 +6,15 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader'
-      }]
+      }
+    ]
   }
 };
 
