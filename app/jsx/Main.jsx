@@ -20,7 +20,7 @@ class Main extends Component {
   cardIsChosen = (e) => {
     this.setState({
       cardIsChosen: true,
-      cardIndex: e.target.dataset.card
+      cardIndex: e.target.dataset.cardIndex
     });
   }
 
@@ -42,10 +42,17 @@ class Main extends Component {
       <div className="main">
 
         {!this.state.cardIsChosen ?
-        <Deck deck={this.props.deck} chooseCard={this.cardIsChosen} /> :
-        !this.state.cardIsRevealed ?
-        <Card side="back" onClick={this.cardIsRevealed}><img src="./images/chas_a_logo_white.png" /></Card> :
-        <Card side="front" onClick={this.newRound}>{this.getPickedCard()}</Card>}
+          <Deck deck={this.props.deck} chooseCard={this.cardIsChosen} /> :
+
+          !this.state.cardIsRevealed ?
+            <Card side="back" onClick={this.cardIsRevealed}>
+              <img src="./images/chas_a_logo_white.png" />
+            </Card> :
+
+            <Card side="front" onClick={this.newRound}>
+              {this.getPickedCard()}
+            </Card>
+        }
 
       </div>
     );
@@ -53,7 +60,7 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  deck: React.PropTypes.array
+  deck: React.PropTypes.array.isRequired
 }
 
 export default Main;

@@ -7,7 +7,7 @@ class Deck extends Component {
 
   renderDeck() {
     return this.props.deck.map((card, index) => {
-        return <div className="deckCard" key={index} data-card={index} onClick={this.props.chooseCard}>{card}</div>
+        return <div className="deckCard" key={index} data-card-index={index} onClick={this.props.chooseCard}>{card}</div>
     });
   }
 
@@ -21,7 +21,7 @@ class Deck extends Component {
 }
 
 Deck.propTypes = {
-  deck: React.PropTypes.array,
+  deck: React.PropTypes.array.isRequired,
   chooseCard: React.PropTypes.func
 }
 

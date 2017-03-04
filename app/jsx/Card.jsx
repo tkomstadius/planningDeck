@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Stateless component, only presentational
-const Card = ({onClick, children, side}) => {
+const Card = ({onClick, side, children}) => {
   return (
     <div className={`card ${side}`} onClick={onClick}>
       {children}
@@ -9,7 +9,8 @@ const Card = ({onClick, children, side}) => {
   );
 
   Card.propTypes = {
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
+    side: React.PropTypes.string
   }
 }
 
