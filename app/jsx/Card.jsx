@@ -1,9 +1,9 @@
 import React from 'react';
 
 // Stateless component, only presentational
-const Card = ({onClick, children}) => {
+const Card = ({onClick, children, side}) => {
   return (
-    <div onClick={onClick}>
+    <div className={`card ${side}`} onClick={onClick}>
       {children}
     </div>
   );

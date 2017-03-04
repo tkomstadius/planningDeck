@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import Deck from './Deck.jsx';
 import Card from './Card.jsx';
 
+//Main component that holds the state of the application
 class Main extends Component {
   constructor(props) {
     super(props);
+  }
 
-    this.state = {
-      cardIsChosen: false,
-      cardIsRevealed: false
-    }
+  state = {
+    cardIsChosen: false,
+    cardIsRevealed: false
   }
 
   getPickedCard = () => {
@@ -38,17 +39,21 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main">
 
         {!this.state.cardIsChosen ?
         <Deck deck={this.props.deck} chooseCard={this.cardIsChosen} /> :
         !this.state.cardIsRevealed ?
-        <Card onClick={this.cardIsRevealed}>Chas</Card> :
-        <Card onClick={this.newRound}>{this.getPickedCard()}</Card>}
+        <Card side="back" onClick={this.cardIsRevealed}><img src="./images/chas_a_logo_white.png" /></Card> :
+        <Card side="front" onClick={this.newRound}>{this.getPickedCard()}</Card>}
 
       </div>
     );
   }
+}
+
+Main.propTypes = {
+  deck: React.PropTypes.array
 }
 
 export default Main;

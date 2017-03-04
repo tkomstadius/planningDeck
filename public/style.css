@@ -1,0 +1,67 @@
+body {
+  box-sizing: border-box;
+  background: url("./images/light-grunge-texture-.50.png") rgb(222, 225, 226);
+  font-family: 'helvetica';
+  font-size: 60px;
+}
+
+header {
+  background: url("./images/light-grunge-texture-.50.png") rgb(222, 225, 226);
+  box-shadow: 0 2px 24px rgba(0, 0, 28, 0.6);
+  z-index: 1100;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100px;
+}
+
+#app {
+  padding-top: 150px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.deck {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.deckCard {
+  width: 25%;
+  padding: 15% 0;
+  background: linear-gradient(135deg, transparent 25px, rgb(255, 255, 255) 20px);
+  cursor: pointer;
+  margin: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 7px 10px -5px rgba(0, 0, 28, 0.6);
+}
+
+.card {
+  width: 80%;
+  height: 80vh;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.back {
+  background-image: url(./images/dark-grunge-texture.png), linear-gradient(rgb(0, 145, 179) 0%, rgb(8, 19, 1) 100%);
+  box-shadow: 0 7px 10px -5px rgba(0, 0, 28, 0.6);
+}
+
+.front {
+  background: linear-gradient(135deg, transparent 75px, rgb(255, 255, 255) 20px);
+  box-shadow: 0 7px 10px -5px rgba(0, 0, 28, 0.6);
+}

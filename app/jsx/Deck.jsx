@@ -7,13 +7,13 @@ class Deck extends Component {
 
   renderDeck() {
     return this.props.deck.map((card, index) => {
-        return <div key={index} data-card={index} onClick={this.props.chooseCard}>{card}</div>
+        return <div className="deckCard" key={index} data-card={index} onClick={this.props.chooseCard}>{card}</div>
     });
   }
 
   render() {
     return (
-      <div>
+      <div className="deck">
         {this.renderDeck()}
       </div>
     );
