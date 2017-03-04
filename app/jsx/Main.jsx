@@ -2,49 +2,55 @@ import React, { Component } from 'react';
 import Deck from './Deck.jsx';
 import Card from './Card.jsx';
 
-//Main component that holds the state of the application
+//main component that holds the state of the application
 class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  //initially; no card is chosen and also therefore not revealed
   state = {
-    cardIsChosen: false,
-    cardIsRevealed: false
+    cardIsNotChosen: true,
+    cardIsNotRevealed: true
   }
 
+  //get the card value based on the index stored in state
   getPickedCard = () => {
     return this.props.deck[this.state.cardIndex];
   }
 
+  //callback when a card is chosen from the select phase, get card index from the event
   cardIsChosen = (e) => {
     this.setState({
-      cardIsChosen: true,
+      cardIsNotChosen: false,
       cardIndex: e.target.dataset.cardIndex
     });
   }
 
+  //callback when card is clicked to be revealed from the waiting phase
   cardIsRevealed = () => {
     this.setState({
-      cardIsRevealed: true
-    })
+      cardIsNotRevealed: false
+    });
   }
 
+  //callback for end click in the reveal phase, start new round
   newRound = () => {
     this.setState({
-      cardIsChosen: false,
-      cardIsRevealed: false
-    })
+      cardIsNotChosen: true,
+      cardIsNotRevealed: true,
+      cardIndex: -1
+    });
   }
 
+  //nested ternery expressions to handle the three phases:
+  //card is not chosen -> select phases
+  //card is chosen but not revealed -> waiting phase
+  //card is revealed -> reveal phase
   render() {
     return (
       <div className="main">
 
-        {!this.state.cardIsChosen ?
+        {this.state.cardIsNotChosen ?
           <Deck deck={this.props.deck} chooseCard={this.cardIsChosen} /> :
 
-          !this.state.cardIsRevealed ?
+          this.state.cardIsNotRevealed ?
             <Card side="back" onClick={this.cardIsRevealed}>
               <img src="./images/chas_a_logo_white.png" />
             </Card> :
