@@ -14,7 +14,7 @@ describe('<Main />', () => {
   it('should render back of card', () => {
     let deck = ['corgi'];
     const wrapper = shallow(<Main deck={deck} />);
-    wrapper.setState({cardIsChosen: true});
+    wrapper.setState({cardIsNotChosen: false});
     wrapper.update();
     expect(wrapper.find('img').length).toBe(1);
   })
@@ -31,20 +31,21 @@ describe('<Main />', () => {
     it('should change state accordingly', () => {
       let fakeEvent = {target: {dataset: {}}};
 
-      expect(wrapper.state().cardIsChosen).toBe(false);
-      expect(wrapper.state().cardIsRevealed).toBe(false);
+      expect(wrapper.state().cardIsNotChosen).toBe(true);
+      expect(wrapper.state().cardIsNotRevealed).toBe(true);
 
       wrapper.instance().cardIsChosen(fakeEvent);
-      expect(wrapper.state().cardIsChosen).toBe(true);
+      expect(wrapper.state().cardIsNotChosen).toBe(false);
       expect(wrapper.state().cardIndex).toNotExist();
 
       wrapper.instance().cardIsRevealed();
-      expect(wrapper.state().cardIsRevealed).toBe(true);
-      expect(wrapper.state().cardIsChosen).toBe(true);
+      expect(wrapper.state().cardIsNotRevealed).toBe(false);
+      expect(wrapper.state().cardIsNotChosen).toBe(false);
 
       wrapper.instance().newRound();
-      expect(wrapper.state().cardIsRevealed).toBe(false);
-      expect(wrapper.state().cardIsChosen).toBe(false);
+      expect(wrapper.state().cardIsNotRevealed).toBe(true);
+      expect(wrapper.state().cardIsNotChosen).toBe(true);
+      expect(wrapper.state().cardIndex).toBe(-1);
     });
   });
 });
