@@ -52,7 +52,7 @@ class Main extends Component {
 
           this.state.cardIsNotRevealed ?
             <Card side="back" onClick={this.cardIsRevealed}>
-              <img src="./images/chas_a_logo_white.png" />
+              <img key="logo" src="./images/chas_a_logo_white.png" />
             </Card> :
 
             <Card side="front" onClick={this.newRound}>

@@ -15,7 +15,6 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  min-height: 50px;
 }
 
 header img {
@@ -23,13 +22,11 @@ header img {
   width: auto;
 }
 
-#app {
-  padding-top: 60px;
-}
-
 .main {
+  margin-top: 60px;
   display: flex;
   justify-content: center;
+  perspective: 800px;
 }
 
 .deck {
@@ -51,7 +48,7 @@ header img {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  box-shadow: 0 7px 10px -5px rgba(0, 0, 28, 0.6);
+  box-shadow: 0 7px 5px -5px rgba(0, 0, 28, 0.6);
   font-size: 25px;
 }
 
@@ -71,9 +68,16 @@ header img {
   font-size: 60px;
 }
 
+span {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
 .back {
   background-image: url(./images/scanline-pattern@2x.png), url(./images/dark-grunge-texture.png), linear-gradient(rgb(0, 145, 179) 0%, rgb(8, 19, 1) 100%);
-  box-shadow: 0 7px 10px -5px rgba(0, 0, 28, 0.6);
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 28, 0.6);
+  backface-visibility: hidden;
 }
 
 .back img {
@@ -83,14 +87,38 @@ header img {
 .front {
   background: linear-gradient(135deg, transparent 40px, rgb(255, 255, 255) 10px);
   box-shadow: 0 10px 5px -5px rgba(0, 0, 28, 0.6);
+  backface-visibility: hidden;
 }
 
+/*classes added by reactCSSTransitionGroup*/
+.flip-appear {
+  transform: rotateY(-90deg);
+}
+
+.flip-appear.flip-appear-active {
+  transform: rotateY(0deg);
+  transition: 1s;
+}
+
+.flip-enter {
+  opacity: 0.01;
+  transform: rotateY(-90deg);
+}
+
+.flip-enter.flip-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+  transform: rotateY(0deg);
+  transition: 1s;
+}
+
+/*handle different screen widths*/
 @media (min-width: 400px) {
   .deckCard {
     font-size: 40px;
   }
-  .card {
-    height: 690px;
+  .card, span {
+    height: 660px;
     max-width: 650px;
     font-size: 90px;
   }
@@ -103,7 +131,7 @@ header img {
     background: linear-gradient(135deg, transparent 20px, rgb(255, 255, 255) 5px);
     font-size: 60px;
   }
-  .card {
+  .card, span {
     height: 800px;
     max-width: 550px;
     font-size: 110px;
