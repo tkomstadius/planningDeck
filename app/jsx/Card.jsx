@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-//component for the lone, chosen card
+//component for the lone, chosen card in wait and reveal phases
 const Card = ({onClick, side, children}) => {
   //which side of the card to render is decided by the side prop; back or front
-  //ReactCSSTransitionGroup is used to add animation on render
+  //ReactCSSTransitionGroup is used to add animation on render, demands keys
   return (
     <ReactCSSTransitionGroup
       transitionName="flip"

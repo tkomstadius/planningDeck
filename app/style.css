@@ -8,8 +8,10 @@ body {
 }
 
 header {
+  /*not show stuff that might possibly go under the header*/
   background: url("./images/light-grunge-texture-.50.png") rgb(222, 225, 226);
   box-shadow: 0 2px 24px rgba(0, 0, 28, 0.6);
+  /*make sure that the header is always on top*/
   z-index: 1100;
   width: 100%;
   position: fixed;
@@ -24,16 +26,26 @@ header img {
 
 .main {
   margin-top: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  /*give room for card to flip*/
   perspective: 800px;
 }
 
 .deck {
   width: 100%;
   margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   max-width: 1400px;
 }
@@ -44,10 +56,13 @@ header img {
   background: linear-gradient(135deg, transparent 10px, rgb(255, 255, 255) 5px);
   cursor: pointer;
   margin: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
-  z-index: 10;
   box-shadow: 0 7px 5px -5px rgba(0, 0, 28, 0.6);
   font-size: 25px;
 }
@@ -61,22 +76,32 @@ header img {
   width: 80%;
   height: 430px;
   margin-top: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   font-size: 60px;
 }
 
+/*the container that ReactCSSTransitionGroup adds*/
 span {
   width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .back {
   background-image: url(./images/scanline-pattern@2x.png), url(./images/dark-grunge-texture.png), linear-gradient(rgb(0, 145, 179) 0%, rgb(8, 19, 1) 100%);
   box-shadow: 0 10px 5px -5px rgba(0, 0, 28, 0.6);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
@@ -87,27 +112,18 @@ span {
 .front {
   background: linear-gradient(135deg, transparent 40px, rgb(255, 255, 255) 10px);
   box-shadow: 0 10px 5px -5px rgba(0, 0, 28, 0.6);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 /*classes added by reactCSSTransitionGroup*/
-.flip-appear {
+.flip-appear, .flip-enter {
+  -webkit-transform: rotateY(-90deg);
   transform: rotateY(-90deg);
 }
 
-.flip-appear.flip-appear-active {
-  transform: rotateY(0deg);
-  transition: 1s;
-}
-
-.flip-enter {
-  opacity: 0.01;
-  transform: rotateY(-90deg);
-}
-
-.flip-enter.flip-enter-active {
-  opacity: 1;
-  transition: opacity 1s ease-in;
+.flip-appear.flip-appear-active, .flip-enter.flip-enter-active {
+  -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
   transition: 1s;
 }

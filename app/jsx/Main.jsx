@@ -7,7 +7,8 @@ class Main extends Component {
   //initially; no card is chosen and also therefore not revealed
   state = {
     cardIsNotChosen: true,
-    cardIsNotRevealed: true
+    cardIsNotRevealed: true,
+    cardIndex: -1
   }
 
   //get the card value based on the index stored in state
@@ -40,15 +41,15 @@ class Main extends Component {
   }
 
   //nested ternery expressions to handle the three phases:
-  //card is not chosen -> select phases
-  //card is chosen but not revealed -> waiting phase
+  //card is not chosen -> select phase
+  //card is chosen but not revealed -> wait phase
   //card is revealed -> reveal phase
   render() {
     return (
       <div className="main">
 
         {this.state.cardIsNotChosen ?
-          <Deck deck={this.props.deck} chooseCard={this.cardIsChosen} /> :
+          <Deck deck={this.props.deck} onClick={this.cardIsChosen} /> :
 
           this.state.cardIsNotRevealed ?
             <Card side="back" onClick={this.cardIsRevealed}>

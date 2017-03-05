@@ -7,8 +7,7 @@
     "watch": "webpack -d --watch",
     "build": "webpack",
     "serve": "serve ./app",
-    "test": "mocha --compilers js:babel-core/register ./app/test/*.spec.js",
-    "t": "mocha"
+    "test": "mocha --compilers js:babel-core/register ./app/test/*.spec.js"
   },
   "author": "Therése Komstadius",
   "devDependencies": {

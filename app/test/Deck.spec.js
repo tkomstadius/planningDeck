@@ -15,7 +15,7 @@ describe('<Deck />', () => {
   it('should call onClick', () => {
     let deck = ["1"];
     let spy = createSpy();
-    const wrapper = shallow(<Deck deck={deck} chooseCard={spy} />);
+    const wrapper = shallow(<Deck deck={deck} onClick={spy} />);
     wrapper.find('.deckCard').simulate('click');
     expect(spy).toHaveBeenCalled();
   });
